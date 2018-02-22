@@ -73,7 +73,7 @@
         [SFHFKeychainUtils storeUsername:kHTBKeychainTokenKey andPassword:key forServiceName:kHTBKeychainServiceName updateExisting:YES error:nil];
     }
     else {
-        [SFHFKeychainUtils deleteItemForUsername:kHTBKeychainTokenKey andServiceName:kHTBKeychainServiceName error:nil];
+        [SFHFKeychainUtils deleteItemForUsername:kHTBKeychainTokenKey andServiceName:kHTBKeychainServiceName error:nil withAccessible:YES];
     }
 }
 
@@ -83,18 +83,18 @@
         [SFHFKeychainUtils storeUsername:kHTBKeychainTokenSecret andPassword:secret forServiceName:kHTBKeychainServiceName updateExisting:YES error:nil];
     }
     else {
-        [SFHFKeychainUtils deleteItemForUsername:kHTBKeychainTokenSecret andServiceName:kHTBKeychainServiceName error:nil];
+        [SFHFKeychainUtils deleteItemForUsername:kHTBKeychainTokenSecret andServiceName:kHTBKeychainServiceName error:nil withAccessible:YES];
     }
 }
 
 - (NSString *)tokenKey
 {
-    return [SFHFKeychainUtils getPasswordForUsername:kHTBKeychainTokenKey andServiceName:kHTBKeychainServiceName error:nil];
+    return [SFHFKeychainUtils getPasswordForUsernameV2:kHTBKeychainTokenKey andServiceName:kHTBKeychainServiceName error:nil];
 }
 
 - (NSString *)tokenSecret
 {
-    return [SFHFKeychainUtils getPasswordForUsername:kHTBKeychainTokenSecret andServiceName:kHTBKeychainServiceName error:nil];
+    return [SFHFKeychainUtils getPasswordForUsernameV2:kHTBKeychainTokenSecret andServiceName:kHTBKeychainServiceName error:nil];
 }
 
 - (HTBAuthorizeEntry *)authorizeEntry
